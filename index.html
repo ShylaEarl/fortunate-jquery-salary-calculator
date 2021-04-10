@@ -15,9 +15,9 @@
     </header>
     
     <main>
-        <section class="inputFields"></section>
+        <section></section>
             <h2>Add Employee</h2>
-            <div>
+            <div id="inputFields" >
                 <input id="firstNameInput" type="text" placeholder="First Name"></input>
                 <input id="lastNameInput" type="text" placeholder="Last Name"></input>
                 <input id="idInput" type="number" placeholder="ID"></input>
@@ -27,10 +27,10 @@
                 <button id="submitButton">Submit</button>
             </div>
         </section>
-        <section class="dataTable">
+        <section>
             <h2>Employees</h2>
             <div>
-                <table>
+                <table id="dataTable">
                     <thead>
                         <tr>
                             <th>First Name</th>
@@ -56,12 +56,9 @@
             </div>
         </section>
         <section>
-            <h2>Total Monthly: $<span id="totalMonthlySalary">0</span></h2>
+            <h2 id="locationTMS">Total Monthly Salary: $<span id="totalMonthlySalary">0</span></h2>
         </section>
-        
-
     </main>
-    
     <footer>
         <p>&copy; 2021 SAE</p>
     </footer>  

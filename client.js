@@ -1,5 +1,6 @@
 console.log('js sourced');
 
+//declaring variable employees with a value of an empty array to hold employee objects
 let employees = [];
 
 $(document).ready(onReady);
@@ -22,10 +23,10 @@ function submitEmployeeInfo(){
         title: $('#titleInput').val(),
         annualSalary: Number($('#annualSalaryInput').val()),
     }
-
+        
     //adds employeeInput objects to employees array for calculation
     employees.push(employeeInput);
-
+        
     //appending input values to a table/form on the DOM
     $('#employeeInfoTable').append(
         `<tr>
@@ -76,6 +77,9 @@ function calculateMonthlySalary(){
 function deleteTableRow(){
     //this clicked button, remove the closest parent row to it
     $(this).closest('tr').remove();
+
+    //add logic here for deleting salary from total and 
+    //update monthly salary on DOM ( .text() or .data() )
 }
 
 function clearInputs(){
@@ -105,6 +109,21 @@ function clearInputs(){
 
 //STRETCH GOALS//
 //[]Add styling or extra functionality that fits with the theme of this assignment.
+//[]--CSS 
+//[]--add all inputs need to be filled w alert
+//[]--all ID inputs need to be unique
+
+//conditional requires that all feilds are filled, if not alerts user
+// if($('#firstNameInput').val() === '' || 
+// $('#lastNameInput').val() === '' ||
+// Number($('#idInput').val()) === '' || 
+// $('#titleInput').val() === '' ||
+// Number($('#annualSalaryInput').val()) === ''){
+//     alert ('Please fill all fields');
+// } else if (Number($('#idInput').val()) === employeeInput.id){
+//     alert ('You must enter a unique id for each employee')
+// }
+
 
 //[]Once the employee is deleted, update the total spend on salaries account 
 //for this employee's removal. This will require that the logic knows 

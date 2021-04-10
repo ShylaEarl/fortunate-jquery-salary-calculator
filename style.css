@@ -1,7 +1,73 @@
 body {
-    background-color: aqua;
+    background-color: antiquewhite;
+    margin: 0;
+}
+
+header {
+    background-color: olive;
+    text-align: center;
+    color: antiquewhite;
+    padding: 1rem;
+}
+
+h2 {
+    padding-left: 1rem;
+}
+
+#inputFields {
+   margin: 15px;
+}
+
+#dataTable {
+    margin: 15px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 80%
+}
+
+th {
+    border: 3px solid black;
+    background-color: lightgray;
+}
+
+td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+#dataTable tr:nth-child(odd){
+    background-color: lightgray;
+}
+
+#dataTable tr:hover {
+    background-color: lightsalmon;
+}
+
+.deleteButton {
+    background-color: teal;
+}
+
+/* table, th, td {
+    border: 1px solid black;
+} */
+
+#locationTMS {
+    position: absolute;
+    bottom: 20px;
+    right: 16px;
+
 }
 
 .redColor {
     background-color: red;
+}
+
+footer {
+    background-color: olive;
+    text-align: center;
+    color: antiquewhite;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
 }

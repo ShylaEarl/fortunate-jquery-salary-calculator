@@ -1,5 +1,5 @@
 # Project Name
-Fortunate-jquery-salary-calculator
+Fortunate-jQuery-salary-calculator
 
 ## Description
 _Duration: Weekend Challenge_
