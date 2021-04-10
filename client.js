@@ -8,6 +8,8 @@ function onReady(){
     console.log('jQ sourced');
     //clicking submit button captures and renders input values to DOM
     $('#submitButton').on('click', submitEmployeeInfo);
+    //clicking this delete button erases this row/employee info from DOM
+    $('#employeeInfoTable').on('click', '.deleteButton', deleteTableRow)
 }
 
 //function captures values from DOM and renders them to DOM table
@@ -68,7 +70,12 @@ function calculateMonthlySalary(){
     if(totalMonthlySalary > 20000){
         el.addClass('redColor');
     }
-    
+}
+
+//function to delete a specific row when its delete button is clicked
+function deleteTableRow(){
+    //this clicked button, remove the closest parent row to it
+    $(this).closest('tr').remove();
 }
 
 function clearInputs(){
@@ -92,14 +99,14 @@ function clearInputs(){
 //[X]calculate monthly costs and append this to the to DOM. 
 //[X]If the total monthly cost exceeds $20,000, add a red background color.
 
-//[]Create a delete button that removes an employee from the DOM. 
+//[X]Create a delete button that removes an employee from the DOM. 
 //For Base mode, it does not need to remove that Employee's salary 
 //from the reported total.
 
 //STRETCH GOALS//
-//Add styling or extra functionality that fits with the theme of this assignment.
+//[]Add styling or extra functionality that fits with the theme of this assignment.
 
-//Once the employee is deleted, update the total spend on salaries account 
+//[]Once the employee is deleted, update the total spend on salaries account 
 //for this employee's removal. This will require that the logic knows 
 //which element was removed. You will need to use .text() as a getter 
 //or look into jQuery's .data() function. This is tricky!
