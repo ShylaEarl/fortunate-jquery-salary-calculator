@@ -108,9 +108,9 @@ function clearInputs(){
 //from the reported total.
 
 //STRETCH GOALS//
-//[]Add styling or extra functionality that fits with the theme of this assignment.
-//[]--CSS 
-//[]--add all inputs need to be filled w alert
+//[X]Add styling or extra functionality that fits with the theme of this assignment.
+//[X]--CSS 
+//[]--all inputs need to be filled w alert
 //[]--all ID inputs need to be unique
 
 //conditional requires that all feilds are filled, if not alerts user
