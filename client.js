@@ -1,61 +1,70 @@
 console.log('js sourced');
 
+let employees = [];
+
 $(document).ready(onReady);
 
 function onReady(){
     console.log('jQ sourced');
-    //clicking submit button runs corresponding fucntion to 
-    //capture and add input values to the DOM
+    //clicking submit button captures and renders input values to DOM
     $('#submitButton').on('click', submitEmployeeInfo);
-    //$('#submitButton').on('click', calculateMonthlySalary);
 }
 
-//function captures values from DOM and displays them on DOM
+//function captures values from DOM and renders them to DOM table
 function submitEmployeeInfo(){
-    //variables to hold input values from DOM
-    let firstName = $('#firstNameInput').val();
-    let lastName = $('#lastNameInput').val();
-    let id = Number($('#idInput').val());
-    let title = $('#titleInput').val();
-    let annualSalary = Number($('#annualSalaryInput').val());
+    //object to hold input values from DOM
+    let employeeInput = {
+        firstName: $('#firstNameInput').val(),
+        lastName: $('#lastNameInput').val(),
+        id: Number($('#idInput').val()),
+        title: $('#titleInput').val(),
+        annualSalary: Number($('#annualSalaryInput').val()),
+    }
+
+    //adds employeeInput objects to employees array for calculation
+    employees.push(employeeInput);
 
     //appending input values to a table/form on the DOM
     $('#employeeInfoTable').append(
         `<tr>
-            <td>${firstName}</td>
-            <td>${lastName}</td>
-            <td>${id}</td>
-            <td>${title}</td>
-            <td>$${annualSalary}</td>
+            <td>${employeeInput.firstName}</td>
+            <td>${employeeInput.lastName}</td>
+            <td>${employeeInput.id}</td>
+            <td>${employeeInput.title}</td>
+            <td>$${employeeInput.annualSalary}</td>
             <td>
                 <button class="deleteButton">Delete</button>
             </td>
         </tr>`
     );
 
+    //calls function to clear DOM inputs
     clearInputs();
+    //calls function to calculate total monthly salary of all employees
     calculateMonthlySalary();
 }
 
+//function to calculate monthly salary of all employees
 function calculateMonthlySalary(){
     //variable to store total annual salary of all employees
     let totalAnnualSalary = 0;
-    //variable to store total monthly salary of all employees
-    let totalMonthlySalary = 0;
-    //get values from annual salary input
-    let eachAnnualSalary = Number($('#annualSalaryInput').val());
-    //add them together and assign total to totalAnnualSalary variable
-    console.log('calculate', eachAnnualSalary);
-    totalAnnualSalary += eachAnnualSalary;
-    console.log('calculate', totalAnnualSalary);
-    //divide totalAnnualSalary by 12 to get total monthly salary costs
-    totalMonthlySalary = totalAnnualSalary / 12;
-    console.log('calculate', totalMonthlySalary);
+    
+    //loop to get values of each employee annual salary
+    for (let person of employees){
+        totalAnnualSalary += person.annualSalary
+    }
+    
+    //total monthly salary of all employees
+    let totalMonthlySalary = totalAnnualSalary / 12;
 
+    //element targets DOM location to render total monthly salary
     let el = $('#totalMonthlySalary');
+    //empties value to prevent repeating
     el.empty();
+    //renders updated total monthly salary value to DOM
     el.append(totalMonthlySalary);
 
+    //conditional statment highlights DOM at totalMonthlySalary if over 20000
     if(totalMonthlySalary > 20000){
         el.addClass('redColor');
     }
@@ -78,12 +87,12 @@ function clearInputs(){
 //ID number, job title, annual salary.
 
 //[X]create a 'Submit' button to collect form information, 
-//[]store the information to calculate monthly costs, (variable? or array?)
+//[X]store the information to calculate monthly costs, (variable? or array?)
 //[X]append information to the DOM and clear the input fields. 
-//[]calculate monthly costs and append this to the to DOM. 
-//[]If the total monthly cost exceeds $20,000, add a red background color.
+//[X]calculate monthly costs and append this to the to DOM. 
+//[X]If the total monthly cost exceeds $20,000, add a red background color.
 
-//[X]Create a delete button that removes an employee from the DOM. 
+//[]Create a delete button that removes an employee from the DOM. 
 //For Base mode, it does not need to remove that Employee's salary 
 //from the reported total.
 
