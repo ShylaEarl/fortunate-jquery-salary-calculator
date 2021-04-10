@@ -15,16 +15,50 @@
     </header>
     
     <main>
-        <h2>Add Employee</h2>
-        <section class="inputFields">
-            <input id="firstNameInput" type="text" placeholder="First Name"></input>
-            <input id="lastNameInput" type="text" placeholder="Last Name"></input>
-            <input id="idInput" type="number" placeholder="ID"></input>
-            <input id="titleInput" type="text" placeholder="Title"></input>
-            <input id="annualSalaryInput" type="number" placeholder="Annual Salary"></input>
-            <br>
-            <button id="submitInput"></button>
+        <section class="inputFields"></section>
+            <h2>Add Employee</h2>
+            <div>
+                <input id="firstNameInput" type="text" placeholder="First Name"></input>
+                <input id="lastNameInput" type="text" placeholder="Last Name"></input>
+                <input id="idInput" type="number" placeholder="ID"></input>
+                <input id="titleInput" type="text" placeholder="Title"></input>
+                <input id="annualSalaryInput" type="number" placeholder="Annual Salary"></input>
+                <!-- <br> -->
+                <button id="submitInput">Submit</button>
+            </div>
         </section>
+        <section class="dataTable">
+            <h2>Employees</h2>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Annual Salary</th>
+                            <th>&nbsp</th>
+                        </tr>
+                    </thead>
+                    <tbody class="employeeInfoTable">
+                        <tr>
+                            <td>Jen</td>
+                            <td>Barber</td>
+                            <td>4521</td>
+                            <td>Team Lead</td>
+                            <td>$80,000</td>
+                            <td><button class="deleteButton">Delete</button></td>
+                        </tr>
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section>
+            <h2>Total Monthly: $<span id="totalSalary">0</span></h2>
+        </section>
+        
 
     </main>
     
