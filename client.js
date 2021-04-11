@@ -8,21 +8,27 @@ $(document).ready(onReady);
 function onReady(){
     console.log('jQ sourced');
     //clicking submit button captures and renders input values to DOM
-    $('#submitButton').on('click', addEmployee); //submitEmployeeInfo
+    $('#submitButton').on('click', addEmployee); 
     //clicking this delete button erases this row/employee info from DOM
     $('#employeeInfoTable').on('click', '.deleteButton', deleteTableRow)
 }
 
 function addEmployee(){
-    //conditional requires that all feilds are filled, if not alerts user
+    //conditional requires that all feilds are filled and id is unique. 
+    //if not, alerts user
+    for(let i = 0; i <employees.length; i++){
+        if(Number($('#idInput').val()) == employees[i].id){
+            alert ('You must enter a unique id for each employee'); 
+            Number($('#idInput').val('')); 
+        }//end unique id check
+    }//end for loop
+    
     if($('#firstNameInput').val() === '' || 
-    $('#lastNameInput').val() === '' ||
-    Number($('#idInput').val()) == '' || 
-    $('#titleInput').val() === '' ||
-    Number($('#annualSalaryInput').val()) == ''){
+        $('#lastNameInput').val() === '' ||
+        Number($('#idInput').val()) == '' || 
+        $('#titleInput').val() === '' ||
+        Number($('#annualSalaryInput').val()) == ''){
         alert ('Please fill all fields');
-    } else if (Number($('#idInput').val()) == employees.id){
-        alert ('You must enter a unique id for each employee')
     } else {
         submitEmployeeInfo(
         $('#firstNameInput').val(), 
@@ -31,7 +37,7 @@ function addEmployee(){
         $('#titleInput').val(), 
         Number($('#annualSalaryInput').val()),
         );
-    }//end conditional
+    }//end fill all feilds conditional
 }//end addEmployee function
 
 //function captures values from DOM and renders them to DOM table
@@ -131,20 +137,8 @@ function clearInputs(){
 //STRETCH GOALS//
 //[X]Add styling or extra functionality that fits with the theme of this assignment.
 //[X]--CSS 
-//[]--all inputs need to be filled w alert
-//[]--all ID inputs need to be unique
-
-//conditional requires that all feilds are filled, if not alerts user
-// if($('#firstNameInput').val() === '' || 
-// $('#lastNameInput').val() === '' ||
-// Number($('#idInput').val()) === '' || 
-// $('#titleInput').val() === '' ||
-// Number($('#annualSalaryInput').val()) === ''){
-//     alert ('Please fill all fields');
-// } else if (Number($('#idInput').val()) === employeeInput.id){
-//     alert ('You must enter a unique id for each employee')
-// }
-
+//[X]--all inputs need to be filled w alert
+//[X]--all ID inputs need to be unique
 
 //[]Once the employee is deleted, update the total spend on salaries account 
 //for this employee's removal. This will require that the logic knows 
