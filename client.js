@@ -3,6 +3,10 @@ console.log('js sourced');
 //declaring variable employees with a value of an empty array to hold employee objects
 let employees = [];
 
+//I'm declaring this globally for the final stretch goal.
+//Prior to working on the final stretch goal this was not here. 
+let totalMonthlySalary = 0; 
+
 $(document).ready(onReady);
 
 function onReady(){
@@ -85,28 +89,29 @@ function calculateMonthlySalary(){
     }
     
     //total monthly salary of all employees
-    let totalMonthlySalary = totalAnnualSalary / 12;
+    totalMonthlySalary = totalAnnualSalary / 12;
 
-    //element targets DOM location to render total monthly salary
-    let el = $('#totalMonthlySalary');
-    //empties value to prevent repeating
-    el.empty();
-    //renders updated total monthly salary value to DOM
-    el.append(totalMonthlySalary);
+    //indicates DOM location to render total monthly salary
+    $('#totalMonthlySalary').text(totalMonthlySalary);
 
     //conditional statment highlights DOM at totalMonthlySalary if over 20000
     if(totalMonthlySalary > 20000){
-        el.addClass('redColor');
+        $('#totalMonthlySalary').addClass('redColor');
     }
 }
 
 //function to delete a specific row when its delete button is clicked
 function deleteTableRow(){
     //this clicked button, remove the closest parent row to it
-    $(this).closest('tr').remove();
+    //$(this).closest('tr').remove();
+    let deletedInfo = $(this).closest('tr').remove().text();
+    console.log('in delete', deletedInfo);
+    //How do I access the salary value of the deleted row????
+    let updatedTotalMonthlySalary = totalMonthlySalary - parseInt(deletedInfo.annualSalary);
+    console.log('updated sal', updatedTotalMonthlySalary);
 
-    //add logic here for deleting salary from total and 
-    //update monthly salary on DOM ( .text() or .data() )
+    //indicates DOM location to render total monthly salary
+    $('#totalMonthlySalary').text(totalMonthlySalary); //updatedTotalMonthlySalary
 }
 
 function clearInputs(){
@@ -144,4 +149,11 @@ function clearInputs(){
 //for this employee's removal. This will require that the logic knows 
 //which element was removed. You will need to use .text() as a getter 
 //or look into jQuery's .data() function. This is tricky!
+
+//CUT CODE TO KEEP JUST IN CASE//
+//let el = $('#totalMonthlySalary');
+//to prevent repeating
+//el.empty();
+//append monthly salary info to DOM at element location
+//el.append(totalMonthlySalary);
 
