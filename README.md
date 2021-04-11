@@ -4,13 +4,15 @@ Fortunate-jQuery-salary-calculator
 ## Description
 _Duration: Weekend Challenge_
 
-Your project description goes here. 
+This application tracks company employees by name, Id number, and annual salary, and calculates the total monthly cost of all employee salaries. If the monthly employee salary cost is above $20,000 a red indicator is triggered. 
+
+This application allows the company to track and calculate monthly employee salary expenses and indicates when those expenses exceed $20,000.
+
+///////////////////////////////////////////////////////////////////////
+
+<!-- Your project description goes here. 
 What problem did you solve? 
-How did you solve it?
-
-
-
-
+How did you solve it? -->
 
 (View Raw will give you the markdown that you can copy to your repos!)
 
