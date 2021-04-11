@@ -8,10 +8,31 @@ $(document).ready(onReady);
 function onReady(){
     console.log('jQ sourced');
     //clicking submit button captures and renders input values to DOM
-    $('#submitButton').on('click', submitEmployeeInfo);
+    $('#submitButton').on('click', addEmployee); //submitEmployeeInfo
     //clicking this delete button erases this row/employee info from DOM
     $('#employeeInfoTable').on('click', '.deleteButton', deleteTableRow)
 }
+
+function addEmployee(){
+    //conditional requires that all feilds are filled, if not alerts user
+    if($('#firstNameInput').val() === '' || 
+    $('#lastNameInput').val() === '' ||
+    Number($('#idInput').val()) == '' || 
+    $('#titleInput').val() === '' ||
+    Number($('#annualSalaryInput').val()) == ''){
+        alert ('Please fill all fields');
+    } else if (Number($('#idInput').val()) == employees.id){
+        alert ('You must enter a unique id for each employee')
+    } else {
+        submitEmployeeInfo(
+        $('#firstNameInput').val(), 
+        $('#lastNameInput').val(), 
+        Number($('#idInput').val()), 
+        $('#titleInput').val(), 
+        Number($('#annualSalaryInput').val()),
+        );
+    }//end conditional
+}//end addEmployee function
 
 //function captures values from DOM and renders them to DOM table
 function submitEmployeeInfo(){
