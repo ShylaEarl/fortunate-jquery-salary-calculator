@@ -3,6 +3,8 @@ console.log('js sourced');
 //declaring variable employees with a value of an empty array to hold employee objects
 let employees = [];
 
+//let tempEmployeeList = [];
+
 //I'm declaring this globally for the final stretch goal.
 //Prior to working on the final stretch goal this was not here. 
 let totalMonthlySalary = 0; 
@@ -14,6 +16,8 @@ function onReady(){
     //clicking submit button captures and renders input values to DOM
     $('#submitButton').on('click', addEmployee); 
     //clicking this delete button erases this row/employee info from DOM
+    //for dynamic click listeners like these delete buttons which don't exist on page load
+    //$(exists now).on('click', exists later, do something);
     $('#employeeInfoTable').on('click', '.deleteButton', deleteTableRow)
 }
 
@@ -63,7 +67,7 @@ function submitEmployeeInfo(){
         `<tr>
             <td>${employeeInput.firstName}</td>
             <td>${employeeInput.lastName}</td>
-            <td>${employeeInput.id}</td>
+            <td class="deleteID">${employeeInput.id}</td>
             <td>${employeeInput.title}</td>
             <td>$${employeeInput.annualSalary}</td>
             <td>
@@ -100,27 +104,62 @@ function calculateMonthlySalary(){
     }
 }
 
+function clearInputs(){
+    //clears inputs on DOM
+    $('#firstNameInput').val('');
+    $('#lastNameInput').val('');
+    Number($('#idInput').val(''));
+    $('#titleInput').val('');
+    Number($('#annualSalaryInput').val(''));
+}
+
 //function to delete a specific row when its delete button is clicked
 function deleteTableRow(){
     //this clicked button, remove the closest parent row to it
     //$(this).closest('tr').remove();
     let deletedInfo = $(this).closest('tr').remove().text();
     console.log('in delete', deletedInfo);
-    //How do I access the salary value of the deleted row????
-    let updatedTotalMonthlySalary = totalMonthlySalary - parseInt(deletedInfo.annualSalary);
-    console.log('updated sal', updatedTotalMonthlySalary);
+    // let deletedId = $(this).closest('tr').find('.deleteID').text();
+    // console.log('in delete', deletedId);
+    
+    // // let tempEmployeeList = [];
+    // //go through array
+    // for (let person of employees) {
+    //     // find person who is fired
+    //     // remove person
+    //     console.log(person.id !== deletedId);
+    //     if (person.id !== deletedId) {
+    //         console.log('keeping', deletedId);
+    //         // put into temp list
+    //         tempEmployeeList.push(person);
+    //     }
+    // }
+    // //temp is now without the deleted person
+    // employees = tempEmployeeList;
+
+    //  //variable to store total annual salary of all employees
+    //  let totalAnnualSalary = 0;
+    
+    //  //loop to get values of each employee annual salary
+    //  for (let person of employees){
+    //      totalAnnualSalary += person.annualSalary
+    //  }
+     
+    //  //total monthly salary of all employees
+    //  totalMonthlySalary = totalAnnualSalary / 12;
+ 
+    //  //indicates DOM location to render total monthly salary
+    //  $('#totalMonthlySalary').text(totalMonthlySalary);
+ 
+    //  //conditional statment highlights DOM at totalMonthlySalary if over 20000
+    //  if(totalMonthlySalary > 20000){
+    //      $('#totalMonthlySalary').addClass('redColor');
+    //  }
 
     //indicates DOM location to render total monthly salary
-    $('#totalMonthlySalary').text(totalMonthlySalary); //updatedTotalMonthlySalary
-}
+    //$('#totalMonthlySalary').text(totalMonthlySalary); //updatedTotalMonthlySalary
 
-function clearInputs(){
-     //clears inputs on DOM
-     $('#firstNameInput').val('');
-     $('#lastNameInput').val('');
-     Number($('#idInput').val(''));
-     $('#titleInput').val('');
-     Number($('#annualSalaryInput').val(''));
+    //calculateMonthlySalary();
 }
 
 
@@ -150,10 +189,21 @@ function clearInputs(){
 //which element was removed. You will need to use .text() as a getter 
 //or look into jQuery's .data() function. This is tricky!
 
-//CUT CODE TO KEEP JUST IN CASE//
-//let el = $('#totalMonthlySalary');
-//to prevent repeating
-//el.empty();
-//append monthly salary info to DOM at element location
-//el.append(totalMonthlySalary);
+//for delete and update salary on DOM stretch goal
 
+//get id of person we clicked/deleted (can give id number an html class)
+//const idToDelete = $(this).closest('tr').find(id number html class).text()
+//const tempEmployeesArray = [];
+//go through array with a for loop
+// for (let person of employees){
+//   find person who is fired
+    //if(employee is one to keep (person.ID !== idToDelete/deletedInfo)){
+        //put them into a temp list
+        //tempEmployeesArray.push(person);
+    //}
+//}
+
+//employees = tempEmployeesArray
+//loop through and readd all salaries??
+//rerender to DOM
+// $('#totalMonthlySalary').text(totalMonthlySalary);
